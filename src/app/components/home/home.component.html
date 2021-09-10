@@ -1,0 +1,54 @@
+<mat-form-field>
+    <mat-label>Search for recipes</mat-label>
+    <input matInput type="text" (keyup)="handleSearch($event)" #searchField>
+    <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="searchField.value=''">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Dish type</mat-label>
+    <mat-select [(ngModel)]="dishType" multiple>
+        <mat-option value="Main%20Course">
+            Main course
+        </mat-option>
+        <mat-option value="Drinks">
+            Drinks
+        </mat-option>
+        <mat-option value="Starter">
+            Starter
+        </mat-option>
+        <mat-option value="Desserts">
+            Dessert
+        </mat-option>
+        <mat-option value="Soup">
+            Soup
+        </mat-option>
+        <mat-option value="Sandwiches">
+            Sandwiches
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Diet</mat-label>
+    <mat-select [(ngModel)]="health" multiple>
+        <mat-option value="vegan">
+            Vegan
+        </mat-option>
+        <mat-option value="vegetarian">
+            Vegetarian
+        </mat-option>
+        <mat-option value="gluten-free">
+            Gluten free
+        </mat-option>
+        <mat-option value="low-sugar">
+            No sugar
+        </mat-option>
+        <mat-option value="peanut-free">
+            No peanuts
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<app-recipe-list [search]="search" [dishType]="dishType" [health]="health"></app-recipe-list>

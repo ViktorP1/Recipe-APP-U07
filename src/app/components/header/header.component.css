@@ -1,0 +1,18 @@
+.log  {
+    color: #fff;
+    text-decoration: none;
+}
+
+.spacer {
+    flex:1 1 auto;
+}
+
+.list-horizontal {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.mat-list-item {
+    color: #fff;
+}

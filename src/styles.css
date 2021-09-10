@@ -1,0 +1,38 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body {
+    background: #D17E6C;
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto,"Helvetica Neue", sans-serif
+}
+
+main {
+    margin:25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 35px;
+}
+
+@media screen and (max-width: 599px) {
+    .grid {
+        grid-template-columns: auto;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 800px) {
+    .grid {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .grid {
+        grid-template-columns: auto auto auto auto;
+    } 
+}

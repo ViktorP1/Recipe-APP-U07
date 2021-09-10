@@ -1,0 +1,54 @@
+<section class="hero">
+    <img src="{{recipe?.image }}" class="round" alt="{{ recipe?.label }}" />
+    <h1>{{ recipe?.label }}</h1>
+</section>
+
+<button mat-raised-button color="accent" *ngIf="recipe && !recipeSaved(getRecipeId(recipe))"
+    (click)="saveRecipe(recipe)">Save recipe</button>
+<button mat-raised-button color="warn" *ngIf="recipe && recipeSaved(getRecipeId(recipe))"
+    (click)="removeRecipe(recipe)">Remove recipe </button>
+
+<h3 *ngIf="recipe && recipeSaved(getRecipeId(recipe))">Instructions</h3>
+<mat-list *ngIf="recipe?.instructions">
+    <mat-list-item *ngFor="let step of recipe?.instructions; index as i">
+        {{ i + 1 + '.'}} {{ step }}
+    </mat-list-item>
+</mat-list>
+
+<mat-form-field appearance="fill" *ngIf="recipe && recipeSaved(getRecipeId(recipe))">
+    <mat-label>Add a step</mat-label>
+    <textarea matInput [(ngModel)]="instruction"></textarea>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="addRecipeInstruction(instruction, recipe)"
+    *ngIf="recipe && recipeSaved(getRecipeId(recipe))">Add</button>
+
+    <h3>Ingredients</h3>
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let ingredient of recipe?.ingredients">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{ ingredient.text }}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            {{ ingredient.foodCategory | titlecase }}
+            <img src="{{ ingredient.image }}" class="round" alt="{{ ingredient.text }}" />
+        </mat-expansion-panel>
+    </mat-accordion>
+    
+    <h3>Nutrients</h3>
+    <mat-card>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Label</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                <tr *ngFor="let data of totalNutrients">
+                    <td>{{ data.label }}</td>
+                    <td>{{ data.quantity | number: '1.0-0' }} {{ data.unit }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card>
