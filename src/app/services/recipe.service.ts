@@ -9,9 +9,9 @@ import { Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 
-export class RecipeService {        //The recipe service handles api calls and contains methods related to recipes
+export class RecipeService {    
 
-  //API settings is stored in an environment file
+  
   private app_id = environment.app_id;
   private app_key = environment.app_key;
   private api_url = environment.api_url;
@@ -23,13 +23,12 @@ export class RecipeService {        //The recipe service handles api calls and c
 
   constructor(private http: HttpClient) { }
 
-  //Uses the http client for making an api call with parameters
   getRecipes(query: string, dishType: Array<string> = null, health: Array<string> = null, mealType: Array<string> = null, max: number = 100): Observable<Recipe[]> {
-    return this.http.get<any>(this.api_url + query + this.api_auth + "&to=" + max + (dishType && dishType.length ? "&dishType=" + dishType.join("&dishType=") : "") +
+    return this.http.get<any>(this.api_url + "q=" + query + this.api_auth + "&to=" + max + (dishType && dishType.length ? "&dishType=" + dishType.join("&dishType=") : "") +
      (health && health.length ? "&health=" + health.join("&health=") : "") + (mealType && mealType.length ? "&mealType=" + mealType.join("&mealType=") : "")).pipe(
       map(res => res.hits.map(res => res.recipe))
     ).pipe(
-      retry(3) && catchError(this.handleError)      //Retry 3 times in case of an error and uses a separate method for handling the error
+      retry(3) && catchError(this.handleError)
     );
   }
 
