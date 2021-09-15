@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./show-recipe.component.css']
 })
 export class ShowRecipeComponent implements OnInit {
-  recipe: Recipe;
+  recipe : Recipe;
   instruction: string;
   private subscriptions = new Subscription();
   totalNutrients: Array<Total> = [];

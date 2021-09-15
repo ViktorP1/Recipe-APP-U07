@@ -1,5 +1,5 @@
 .log  {
-    color: #fff;
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
@@ -14,5 +14,6 @@
 }
 
 .mat-list-item {
-    color: #fff;
+    color: rgb(0, 0, 0);
+    font-size:x-large
 }

@@ -2,11 +2,11 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 html, body {
-    background: #D17E6C;
+    background: #9ad16c;
     margin:0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Roboto,"Helvetica Neue", sans-serif
+    font-family: 'Courier New', Courier, monospace
 }
 
 main {

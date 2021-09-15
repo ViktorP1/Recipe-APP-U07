@@ -1,6 +1,6 @@
 <h2>Recommended recepies</h2>
 <section class="grid">
-    <mat-card class="card" *ngFor="let recipe of Recepies">
+    <mat-card class="card" *ngFor="let recipe of recipes">
         <mat-card-header>
             <mat-card-title>
                 <h3>{{ recipe.label }}</h3>
@@ -10,10 +10,10 @@
             <img  mat-card-image src="{{ recipe.image }}" alt=" {{ recipe.label }}" height="300px" />
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button [routerLink]="'/recipe/ + getRecipeId(recipe)">Show recipe </button>
-            <button mat-button (click)="saveRecipe(recipe)" *ngIf="!recipeSaved(getRecipeId(recipe))">Save</button>
-            <button mat-button (click)="removeRecipe(recipe)" *ngIf="recipeSaved(getRecipeId(recipe))">Remove</button>
+            <button mat-raised-button color="primary" [routerLink]="'/recipe/' + getRecipeId(recipe)">Show recipe </button>
+            <button mat-raised-button color="primary" (click)="saveRecipe(recipe)" *ngIf="!recipeSaved(getRecipeId(recipe))">Save</button>
+            <button mat-raised-button color="warn" (click)="removeRecipe(recipe)" *ngIf="recipeSaved(getRecipeId(recipe))">Remove</button>
         </mat-card-actions>
     </mat-card>
-    <p *ngIf="!recipe.length">No Recipe found try again.</p>
+    <p *ngIf="!recipes.length">No recipes found.</p>
 </section>

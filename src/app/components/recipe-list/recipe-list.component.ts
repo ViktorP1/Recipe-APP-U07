@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class RecipeListComponent implements OnInit {
 
-  @Input() search : string;
+  @Input() search :  string;
   @Input() dishType: Array<string>;
   @Input() health: Array<string>;
   recipes: Recipe[] = [];                       

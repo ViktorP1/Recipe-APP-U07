@@ -10,8 +10,8 @@
             <img mat-card-image src="{{ recipe.image }}" alt="{{ recipe.label }}" height="250px" />
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button [routerLink]="'/recipe/' + getRecipeId(recipe)">Showrecipe</button>
-            <button mat-button (click)="removeRecipe(recipe)">Remove from saved</button>
+            <button mat-raised-button color="primary" [routerLink]="'/recipe/' + getRecipeId(recipe)">Showrecipe</button>
+            <button mat-raised-button color="warn" (click)="removeRecipe(recipe)">Remove from saved</button>
         </mat-card-actions>
     </mat-card>
     <p *ngIf="!recipes.length">No recipes found.</p>
